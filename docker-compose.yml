@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  discovery:
+    build:
+      context: ./discover
+    image: discovery-image
+    ports:
+      - "8761:8761"
+    networks:
+      - microservices-network
+    hostname: discovery-host
+
+  gateway:
+    build:
+      context: ./gateway
+    image: gateway-image
+    ports:
+      - "8000:8000"
+    depends_on:
+      - discovery
+    networks:
+      - microservices-network
+    hostname: gateway-host
+
+  notification:
+    build:
+      context: ./notification
+    image: notification-image
+    ports:
+      - "8081:8081"
+    depends_on:
+      - discovery
+      - gateway
+    networks:
+      - microservices-network
+    hostname: notification-host
+
+  authentication:
+    build:
+      context: ./authentication
+    image: authentication-image
+    ports:
+      - "8082:8082"
+    depends_on:
+      - discovery
+      - gateway
+    networks:
+      - microservices-network
+    hostname: authentication-host
+
+networks:
+  microservices-network:
+    driver: bridge

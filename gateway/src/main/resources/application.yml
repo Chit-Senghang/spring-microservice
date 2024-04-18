@@ -16,12 +16,13 @@ spring:
           predicates:
             - Path=/notification/**
 
-        - id: post-service
-          uri: lb://post-service
+        - id: authentication-service
+          uri: lb://authentication-service
           predicates:
             - Path=/post/**
-
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

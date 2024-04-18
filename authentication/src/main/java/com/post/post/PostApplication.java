@@ -8,8 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 public class PostApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PostApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(PostApplication.class, args);
+    }
 }

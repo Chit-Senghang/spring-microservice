@@ -1,0 +1,6 @@
+rootProject.name = 'spring-microservice'
+include 'discover'
+include 'gateway'
+include 'notification'
+include 'authentication'
+
